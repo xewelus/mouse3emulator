@@ -1,38 +1,41 @@
 ﻿using MouseKeyboardLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Mouse3Emulator
 {
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
-		MouseHook mouseHook = new MouseHook();
-		KeyboardHook keyboardHook = new KeyboardHook();
+		private readonly KeyboardHook keyboardHook = new KeyboardHook();
 
-		public Form1()
+		public MainForm()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 		}
 
 		protected override void OnLoad(EventArgs e)
 		{
 			base.OnLoad(e);
-			keyboardHook.KeyDown += new KeyEventHandler(keyboardHook_KeyDown);
-            keyboardHook.Start();
+
+			this.keyboardHook.KeyDown += new KeyEventHandler(this.keyboardHook_KeyDown);
+			this.keyboardHook.Start();
 		}
 
 		private void keyboardHook_KeyDown(object sender, KeyEventArgs e)
 		{
+			//if (e.KeyCode == Keys.BrowserForward || e.KeyCode == Keys.A)
 			if (e.KeyCode == Keys.BrowserForward)
 			{
 				MouseSimulator.Click(MouseButton.Middle);
+				//KeyboardSimulator.KeyPress(Keys.B);
+				e.Handled = true;
 			}
+		}
+
+		protected override void OnShown(EventArgs e)
+		{
+			base.OnShown(e);
+			this.Hide();
 		}
 	}
 }
