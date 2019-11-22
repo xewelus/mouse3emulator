@@ -24,12 +24,15 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\builds\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mouse3.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,6 +52,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MouseKeyboardLibrary\GlobalHook.cs" />
+    <Compile Include="MouseKeyboardLibrary\KeyboardHook.cs" />
+    <Compile Include="MouseKeyboardLibrary\KeyboardSimulator.cs" />
+    <Compile Include="MouseKeyboardLibrary\MouseHook.cs" />
+    <Compile Include="MouseKeyboardLibrary\MouseSimulator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -74,10 +82,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MouseKeyboardLibrary\MouseKeyboardLibrary.csproj">
-      <Project>{F419622F-4D82-40A6-B4FB-3FE36579F018}</Project>
-      <Name>MouseKeyboardLibrary</Name>
-    </ProjectReference>
+    <Content Include="mouse3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

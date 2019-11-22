@@ -37,5 +37,10 @@ namespace Mouse3Emulator
 			base.OnShown(e);
 			this.Hide();
 		}
+
+		private void miQuit_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 	}
 }
